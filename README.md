@@ -82,7 +82,7 @@ claude mcp add note-draft -e NOTE_SESSION_COOKIE='...' -- node /path/to/note-mcp
 ### Claude Code on the web（クラウドセッション）
 
 1. 環境設定のシークレットに `NOTE_SESSION_COOKIE` を登録します。
-2. ネットワークの許可リストに `note.com`、`editor.note.com`、画像の配信・アップロード先（`assets.st-note.com` と、画像アップロード時に使うストレージのホスト）を追加します。
+2. ネットワークの許可リストに `note.com`、`editor.note.com`、`assets.st-note.com`、`note-cakes-web-dev.s3.ap-northeast-1.amazonaws.com`（画像のアップロード先）を追加します。
 
 ### Claude Desktop
 
@@ -141,6 +141,8 @@ Claude に、たとえば次のように頼みます。
 | 見出し画像 | `POST /api/v1/image_upload/note_eyecatch` |
 
 呼べる API は `src/note-client.ts` の `ALLOWED_ENDPOINTS` に限定しています。
+
+2026年9月27日に、上の API すべてで下書きの作成・本文画像の埋め込み・見出し画像の設定ができることを確認しました（本文の `<figure><img>` も消されずに保存されます）。
 
 エンドポイントは、次の MIT ライセンスの実装を参考に調べました。
 
